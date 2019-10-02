@@ -5,7 +5,7 @@ class Testing(models.Model): #Шапка теста
     nameTest = models.TextField()
     dateQT = models.DateField(auto_now_add=True, blank=True)
     description = models.TextField()
-    autor = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='autor_set')
+    autor = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='autor_set', blank=True, null=True, default=None)
 
     def __repr__(self):
         return self.nameTest
