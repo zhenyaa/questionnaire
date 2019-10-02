@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<div class="card">
+<h2 class="card-title">Результат теста</h2>
+
+    <div class="card-body">
+<p>Количество правельных ответов: {{resulthead.quantTA}}</p>
+
+<p>Процент: {{resulthead.persentTA|floatformat}}%</p>
+        </div>
+
+</div>
+
+{% endblock %}

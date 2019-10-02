@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<div class="card">
+     <div class="card-body">
+            <p> Детали теста </p>
+
+            <div>
+                <h2>Автор: {{ autor.username|safe }} </h2>
+                <!--<p>{{ autor.username|safe }}</p>-->
+            </div>
+            <P> Название: {{ object.nameTest|safe }}</P>
+            <P> Описание: {{ object.description|safe }}</P>
+            <a href="{% url 'StartTest' object.id  %}"> Пройти</a>
+            <p>Количество попыток:  {{ quant|safe }}</p>
+            <!--<a href="{% url 'StartTest' object.id  %}"> Удалить</a>-->
+
+            <!--<h2>список вопросов</h2>-->
+            <!--<ul class="list-group">-->
+                <!--{% for q in quest %}-->
+                <!--<li class="list-group-item">  {{ q.deskriptionQuest|safe }} </li>-->
+                <!--{% endfor %}-->
+            <!--</ul>-->
+        <h3>Комментарии</h3>
+         <div class="card">
+
+         {% for comment in comments %}
+             <div class="alert alert-warning" role="alert">
+                    {{ comment.comment }}
+            </div>
+             <!--<p>{{ comment.comment }}</p>-->
+        {% endfor %}
+         </div>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                <label for="comment">Комментарий</label>
+                <input type="text" name='comment' class="form-control" id="comment" placeholder="Комментарий">
+                </div>
+             <button type="submit" class="btn btn-primary">Добавить</button>
+            </form>
+    </div>
+</div>
+{% endblock %}
+

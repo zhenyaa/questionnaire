@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<form method="post">
+     {% csrf_token %}
+    <div class="card" style="width: 80%; margin: 20px;">
+        <h2>Вопросы</h2>
+{% for qu in alllist%}
+<h1>   {{ qu.0.deskriptionQuest}} </h1>
+    {% for answer in qu.1 %}
+            <div class="card">
+                <div class="form-check form-group">
+                     <input type="radio" class="form-check-input" id="materialUnchecked" name="{{ qu.0.id }}" value="{{ answer.id  }}">
+                     <label class="form-check-label" for="materialUnchecked">{{ answer }}</label>
+            </div>
+                </div>
+        {% endfor %}
+
+{% endfor %}
+
+  <button type="submit" class="btn btn-primary">Закончить</button>
+        </div>
+</form>
+
+
+<!--<textarea onclick="this.focus() ; this.select()" style="width: 100%;">-->
+    <!--{% filter force_escape %} {% debug %} {% endfilter %}-->
+<!--</textarea>-->
+<!--{% endblock %}-->
