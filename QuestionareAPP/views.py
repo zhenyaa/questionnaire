@@ -16,7 +16,7 @@ from itertools import chain
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class CreateQuestionnareView(LoginRequiredMixin,CreateView): #создание теста, описание название
+class CreateQuestionnareView(CreateView): #создание теста, описание название
     model = Testing
     fields = ['nameTest', 'description']
     template_name = "questionnare/newTest.html"
@@ -32,7 +32,7 @@ class CreateQuestionnareView(LoginRequiredMixin,CreateView): #создание �
         return super(CreateQuestionnareView, self).form_valid(form)
 
 
-class QuestionAnswerCreateView(LoginRequiredMixin,View): # создание вопросов ответов
+class QuestionAnswerCreateView(View): # создание вопросов ответов
     form_class = NewTestFormFactory
     template_name = 'questionnare/new-questions.html'
 
@@ -48,7 +48,7 @@ class QuestionAnswerCreateView(LoginRequiredMixin,View): # создание во
             return redirect('home')
         return render(request, self.template_name, {"myformset": recive_form})
 
-class QuestionnareListView(LoginRequiredMixin,ListView): #список тестов
+class QuestionnareListView(ListView): #список тестов
     model = Testing
     template_name = 'questionnare/test-list.html'
 
@@ -75,7 +75,7 @@ class QuestionnareListView(LoginRequiredMixin,ListView): #список тест�
         context['finished'] = self.request.GET.get('finished')
         return context
 
-class DeliteTest(LoginRequiredMixin,DeleteView):
+class DeliteTest(DeleteView):
     model = Testing
     success_url = reverse_lazy('ListTestsView')
 
@@ -105,7 +105,7 @@ class DetailQuestionnareView(LoginRequiredMixin,DetailView):#информаци�
         context['comments'] = Comments.objects.filter(testing=self.get_object())
         return self.render_to_response(context=context)
 
-class StartTest(LoginRequiredMixin,View, ContextMixin):#пройти тест
+class StartTest(View,ContextMixin):#пройти тест
     template_name = 'questionnare/start-test.html'
     def get(self, request, *args, **kwargs):
         answers = list()
@@ -136,7 +136,7 @@ class StartTest(LoginRequiredMixin,View, ContextMixin):#пройти тест
             questionnaireResultHead.save()
         return redirect('DetailResultUser', pk = questionnaireResultHead.id)
 
-class DetailResultView(LoginRequiredMixin,DetailView):#результат теста
+class DetailResultView(DetailView):#результат теста
     model = ResultHead
     template_name = 'questionnare/detail-result.html'
 
