@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .idea/
 
 # Created by https://www.gitignore.io/api/macos,linux,django,python,pycharm
@@ -117,6 +118,10 @@ fabric.properties
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
+=======
+# Byte-compiled / optimized / DLL files
+__pycache__/
+>>>>>>> 8cc456e3ea63830170ef35026694969cbffeaac9
 *.py[cod]
 *$py.class
 
@@ -125,7 +130,10 @@ fabric.properties
 
 # Distribution / packaging
 .Python
+<<<<<<< HEAD
 env/
+=======
+>>>>>>> 8cc456e3ea63830170ef35026694969cbffeaac9
 build/
 develop-eggs/
 dist/
@@ -141,6 +149,10 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+<<<<<<< HEAD
+=======
+MANIFEST
+>>>>>>> 8cc456e3ea63830170ef35026694969cbffeaac9
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -160,6 +172,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
+<<<<<<< HEAD
 *,cover
 .hypothesis/
 
@@ -167,6 +180,20 @@ coverage.xml
 *.mo
 
 # Django stuff:
+=======
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+>>>>>>> 8cc456e3ea63830170ef35026694969cbffeaac9
 
 # Flask stuff:
 instance/
@@ -193,6 +220,7 @@ celerybeat-schedule
 # SageMath parsed files
 *.sage.py
 
+<<<<<<< HEAD
 # dotenv
 .env
 
@@ -200,6 +228,16 @@ celerybeat-schedule
 .venv
 venv/
 ENV/
+=======
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+>>>>>>> 8cc456e3ea63830170ef35026694969cbffeaac9
 
 # Spyder project settings
 .spyderproject
@@ -211,4 +249,9 @@ ENV/
 # mkdocs documentation
 /site
 
+<<<<<<< HEAD
 # End of https://www.gitignore.io/api/macos,linux,django,python,pycharm
+=======
+# mypy
+.mypy_cache/
+>>>>>>> 8cc456e3ea63830170ef35026694969cbffeaac9
