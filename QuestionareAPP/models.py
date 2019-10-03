@@ -36,8 +36,8 @@ class Answers(models.Model): #Ответы
 
 class ResultHead(models.Model): #Шапка ответов на тест
     complited = models.BooleanField(default=False)
-    quantTA = models.IntegerField(default=1)
-    persentTA = models.FloatField(default=1)
+    quantTA = models.IntegerField(default=0)
+    persentTA = models.FloatField(default=0)
 
     testingR = models.ForeignKey(Testing, on_delete=models.CASCADE)
     userR = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -49,6 +49,7 @@ class ResultHead(models.Model): #Шапка ответов на тест
 
 
     def setquant(self):
+        print('its test', self.result_set.filter(trueAnswer = True))
         return self.result_set.filter(trueAnswer = True).count()
     def getAllQuantQuest(self):
         test = self.testingR

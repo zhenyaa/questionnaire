@@ -131,6 +131,7 @@ class StartTest(View,ContextMixin):#пройти тест
             print(answ)
             c = Result(resultHead=questionnaireResultHead, answer=answ, trueAnswer=answ.itTrue)
             c.save()
+            print('its setquant', questionnaireResultHead.setquant())
             questionnaireResultHead.quantTA = questionnaireResultHead.setquant()
             questionnaireResultHead.save()
             questionnaireResultHead.getAllQuantQuest()
