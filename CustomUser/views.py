@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
@@ -6,8 +7,11 @@ from .models import  CustomUser
 ###################################
 from .forms import CustomUserCreationForm
 
+from django.utils.decorators import method_decorator
 
+@method_decorator(csrf_exempt, name='dispatch')
 class SignUpView(CreateView):
+
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'user/signup.html'

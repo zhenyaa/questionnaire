@@ -41,7 +41,9 @@ class QuestionAnswerCreateView(View): # создание вопросов отв
         return render(request, self.template_name, {"myformset": form})
 
     def post(self, request, *args, **kwargs):
+        print(request.POST)
         recive_form = NewTestFormFactory(request.POST)
+        print('its pk', self.kwargs['pk'])
         if recive_form.is_valid():
             for form in recive_form:
                 form.save(self.kwargs["pk"])

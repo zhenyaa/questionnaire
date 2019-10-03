@@ -44,12 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
+    'crispy_forms',
     ####################
     'CustomUser.apps.CustomuserConfig',
     'QuestionareAPP'
 ]
 
 AUTH_USER_MODEL = 'CustomUser.CustomUser'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

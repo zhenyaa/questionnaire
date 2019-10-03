@@ -3,11 +3,11 @@ from django.forms import formset_factory, inlineformset_factory, ModelForm
 from .models import Answers,Question, ResultHead, Testing
 
 class NewTestForm(forms.Form):
-    question = forms.CharField(max_length=100)
-    answer1 = forms.CharField()
-    answer2 = forms.CharField()
-    answer3 = forms.CharField()
-    answer4 = forms.CharField()
+    question = forms.CharField(max_length=100, label='Вопрос')
+    answer1 = forms.CharField(label='Верный ответ')
+    answer2 = forms.CharField(label='Ответ')
+    answer3 = forms.CharField(label='Ответ')
+    answer4 = forms.CharField(label='Ответ')
 
     def save(self, pk):
         question = Question(deskriptionQuest = self.cleaned_data['question'], testing =  Testing.objects.get(pk=pk))
@@ -23,7 +23,7 @@ class NewTestForm(forms.Form):
         ans4.save()
         return question
 
-NewTestFormFactory = formset_factory(NewTestForm, extra= 5)
+NewTestFormFactory = formset_factory(NewTestForm, extra= 5, min_num=5)
 
 
 

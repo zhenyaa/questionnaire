@@ -2,94 +2,26 @@
 
 {% block content %}
 {% load static %}
+{% load crispy_forms_tags %}
 
-
-<!--<form method="post">-->
-
-
-
-    <!--{% csrf_token %}-->
-        <!--{% for forma in form %}-->
-    <!--<div class="card" style="width: 25rem; padding: 5px 10px 20px 20px; margin: 20px; background-color: #3366CC;">-->
-            <!--<div class="form-group">-->
-                <!--<label for="exampleInputEmail1">Вопрос</label>-->
-                <!--<input type="text" name="{{ question }}" class="form-control" id="exampleInputEmail1"  placeholder="ВВедите вопрос">-->
-            <!--</div>-->
-
-            <!--<div class="form-group">-->
-                <!--<label for="exampleInputPassword1">Правельный ответ</label>-->
-                <!--<input type="text" name="{{ answer1 }}" class="form-control" id="exampleInputPassword1" placeholder="Anwer">-->
-            <!--</div>-->
-
-            <!--<div class="form-group">-->
-                <!--<label for="exampleInputPassword2">Ответ</label>-->
-                <!--<input type="text" name="{{ answer2 }}" class="form-control" id="exampleInputPassword2" placeholder="Anwer">-->
-            <!--</div>-->
-
-            <!--<div class="form-group">-->
-                <!--<label for="exampleInputPassword3">Ответ</label>-->
-                <!--<input type="text" name="{{ answer3 }}" class="form-control" id="exampleInputPassword3" placeholder="Anwer">-->
-            <!--</div>-->
-
-            <!--<div class="form-group">-->
-                <!--<label for="exampleInputPassword4">Ответ</label>-->
-                <!--<input type="text" name="{{ answer4 }}" class="form-control" id="exampleInputPassword4" placeholder="Anwer">-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-        <!--{% endfor %}-->
-
-    <!--<button type="submit" class="btn btn-primary">Save</button>-->
-<!--</form>-->
 <form method="post">
     {% csrf_token %}
-<h3>Список вопросов</h3>
+<h3>FormSet example</h3>
 {{ myformset.management_form }}
 <div id="form_set">
     {% for form in myformset.forms %}
-	    {{form.non_field_errors}}
-		{{form.errors}}
 
-        <div class="card" style="width: 25rem; padding: 5px 10px 20px 20px; margin: 20px; background-color: #3366CC;">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Вопрос</label>
-                <input type="text" name="{{ question }}" class="form-control" id="exampleInputEmail1"  placeholder="ВВедите вопрос">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputPassword1">Правельный ответ</label>
-                <input type="text" name="{{ answer1 }}" class="form-control" id="exampleInputPassword1" placeholder="Anwer">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputPassword2">Ответ</label>
-                <input type="text" name="{{ answer2 }}" class="form-control" id="exampleInputPassword2" placeholder="Anwer">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputPassword3">Ответ</label>
-                <input type="text" name="{{ answer3 }}" class="form-control" id="exampleInputPassword3" placeholder="Anwer">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputPassword4">Ответ</label>
-                <input type="text" name="{{ answer4 }}" class="form-control" id="exampleInputPassword4" placeholder="Anwer">
-            </div>
-        </div>
-
-        <!--<table class='no_error'>-->
-            <!--{{ form.as_p }}-->
-        <!--</table>-->
+        <table class='no_error'>
+            <div class="card" style="width: 25rem; padding: 5px 10px 20px 20px; margin: 20px; background-color: #3366CC;">
+            {{ form|crispy }}
+                </div>
+        </table>
     {% endfor %}
-
 </div>
 <input type="button" value="Add More" id="add_more">
 <div id="empty_form" style="display:none">
     <table class='no_error'>
-        {{ myformset.empty_form }}
-
-
+        {{ myformset.empty_form|crispy }}
     </table>
 </div>
 <button type="submit" class="btn btn-primary">Save</button>
