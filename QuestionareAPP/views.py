@@ -14,6 +14,8 @@ from django.forms import formset_factory, inlineformset_factory
 from .models import Testing, Question, Answers,CustomUser, ResultHead, Result, Comments
 from itertools import chain
 from django.contrib.auth.mixins import LoginRequiredMixin
+#########################################################
+from rest_framework import viewsets
 
 
 class CreateQuestionnareView(CreateView): #создание теста, описание название
@@ -149,4 +151,12 @@ class DetailResultView(DetailView):#результат теста
         return context
 
 
+
+from .serializers import TestingListSerialize
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Testing.objects.all().order_by('-dateQT')
+    serializer_class = TestingListSerialize
 

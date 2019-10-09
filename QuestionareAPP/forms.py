@@ -23,7 +23,7 @@ class NewTestForm(forms.Form):
         ans4.save()
         return question
 
-NewTestFormFactory = formset_factory(NewTestForm, extra= 5, min_num=5)
+NewTestFormFactory = formset_factory(NewTestForm, extra=5)
 
 
 

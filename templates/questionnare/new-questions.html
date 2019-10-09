@@ -21,7 +21,9 @@
 <input type="button" value="Add More" id="add_more">
 <div id="empty_form" style="display:none">
     <table class='no_error'>
+        <div class="card" style="width: 25rem; padding: 5px 10px 20px 20px; margin: 20px; background-color: #3366CC;">
         {{ myformset.empty_form|crispy }}
+        </div>
     </table>
 </div>
 <button type="submit" class="btn btn-primary">Save</button>

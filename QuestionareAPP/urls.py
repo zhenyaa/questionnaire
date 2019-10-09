@@ -1,6 +1,12 @@
 from django.urls import path
 from . import views
 from django.conf.urls import url
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'testing', views.UserViewSet)
+
+
 urlpatterns = [
 
     path('createtest/', views.CreateQuestionnareView.as_view(), name='createTest'), #создание теста

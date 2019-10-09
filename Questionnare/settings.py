@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'crispy_forms',
+    'rest_framework',
     ####################
     'CustomUser.apps.CustomuserConfig',
     'QuestionareAPP'

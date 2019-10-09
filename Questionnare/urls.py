@@ -20,14 +20,22 @@ from django.views.generic.base import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from QuestionareAPP import views
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'testing', views.UserViewSet)
+
 
 urlpatterns = [
+    path('api-v1', include(router.urls)),
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='base.html'), name='home'),
     path('qustionnare/', include('QuestionareAPP.urls'), name='Questionare'),
     path('users/', include('CustomUser.urls')),
     path('users/', include('django.contrib.auth.urls')),
     url(r'^auth/', include('social_django.urls', namespace='social')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 
 ]
 urlpatterns += staticfiles_urlpatterns()
