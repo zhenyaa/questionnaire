@@ -160,3 +160,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = Testing.objects.all().order_by('-dateQT')
     serializer_class = TestingListSerialize
 
+from .serializers import StartTestSerialize
+class TestingListSet(viewsets.ModelViewSet):
+    queryset = Question.objects.all()
+    serializer_class =  StartTestSerialize

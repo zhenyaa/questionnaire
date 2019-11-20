@@ -27,7 +27,7 @@ class Answers(models.Model): #Ответы
     answer = models.TextField()
     itTrue = models.BooleanField()
 
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, related_name='answer', on_delete=models.CASCADE)
 
     def __repr__(self):
         return self.answer

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'social_django',
     'crispy_forms',
     'rest_framework',
+    'corsheaders',
     ####################
     'CustomUser.apps.CustomuserConfig',
     'QuestionareAPP'
@@ -55,6 +56,9 @@ AUTH_USER_MODEL = 'CustomUser.CustomUser'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -158,5 +162,17 @@ FIXTURE_DIRS = (
    'fixtures',
 )
 
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = [
+
+    'http://localhost:4200',
+
+
+    'http://localservername'
+
+
+
+]
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)

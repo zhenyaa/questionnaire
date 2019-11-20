@@ -25,12 +25,13 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'testing', views.UserViewSet)
+router.register(r'question', views.TestingListSet)
 
 
 urlpatterns = [
     path('api-v1', include(router.urls)),
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='base.html'), name='home'),
+    path('', TemplateView.as_view(template_name='indexAng.html'), name='home'),
     path('qustionnare/', include('QuestionareAPP.urls'), name='Questionare'),
     path('users/', include('CustomUser.urls')),
     path('users/', include('django.contrib.auth.urls')),
